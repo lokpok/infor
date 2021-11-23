@@ -1,0 +1,33 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+#include <vector>
+using std::vector;
+#include <cstdlib>
+using std::exit;
+#include <algorithm>
+using std::remove;
+ 
+int main()
+{
+    int mass[1000];
+    for(int i=0;i<=999;i++)
+        mass[i]=i;
+ 
+    for(int i=2;i<=999;i++)
+    {
+        if(mass[i]==0) continue;
+        for(int n=i+i;n<999;n=n+i)
+        {
+            mass[n]=0;
+        }
+    }
+ 
+    int* end=remove(mass,mass+sizeof(mass)/sizeof(int),0);
+ 
+    for(int* i=mass;i!=end;i++)
+        cout <<*i<<endl;
+ 
+ 
+    return 0;
+}
